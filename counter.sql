@@ -9,8 +9,8 @@ LANGUAGE plpgsql AS $$
             IF element =
                     (SELECT tmp_table_func_counter.value
                     FROM tmp_table_func_counter
-                    WHERE tmp_table_func_counter.value = element) THEN
-
+                    WHERE tmp_table_func_counter.value = element)
+                THEN
                 UPDATE tmp_table_func_counter
                 SET frequency = tmp_table_func_counter.frequency + 1
                 WHERE tmp_table_func_counter.value = element;
@@ -21,7 +21,7 @@ LANGUAGE plpgsql AS $$
         END LOOP;
         RETURN QUERY SELECT * FROM tmp_table_func_counter;
     END;
-$$
+$$;
 
 
 
